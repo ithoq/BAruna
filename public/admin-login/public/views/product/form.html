@@ -1,0 +1,163 @@
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<div class="wrapper-md">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading font-bold">
+					<i class="fa fa-list-alt fa-pencil"></i> {{title}}
+				</div>
+				<div class="panel-body">
+					<form class="form-horizontal" name="masterForm" class="form-validation">
+
+
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Name *</label>
+							<div class="col-sm-10">
+								<input class="form-control" name="name" type="text"
+									ng-model="master.name"  required />
+							</div>
+						</div>
+
+
+					
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Category *</label>
+							<div class="col-sm-10">
+								<select class="form-control"  ng-model="master.category_id"
+                                      ng-options="combo_box.id as combo_box.name for combo_box in list_category"
+                                      required>
+                                      </select>
+							</div>
+						</div>
+
+						
+
+
+						<!-- <div class="form-group">
+							<label class="col-sm-2 control-label">Address</label>
+							<div class="col-sm-10">
+								<textarea class='form-control' ng-model='master.address' rows='2'></textarea>
+							</div>
+						</div>
+ -->
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Description</label>
+							<div class="col-sm-10">
+								<div text-angular ng-model="master.description" class="btn-groups"></div>
+							</div>
+						</div>
+
+
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">SEO Title</label>
+							<div class="col-sm-10">
+								<input class="form-control" type="text"
+									ng-model="master.meta_title"  />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Focus Keyword</label>
+							<div class="col-sm-10">
+								<input class="form-control"  type="text"
+									ng-model="master.meta_keyword"   />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Meta Description</label>
+							<div class="col-sm-10">
+								<textarea class='form-control' ng-model='master.meta_description' rows='2'></textarea>
+							</div>
+						</div>
+
+						
+
+
+					</form>
+				</div>
+			</div>
+
+		</div>	
+
+
+		<!-- <div class="col-lg-5">
+			<div class="panel panel-default">
+				<div class="panel-heading font-bold">
+					<i class="fa fa-list-alt fa-pencil"></i> Facilities
+				</div>
+				<div class="panel-body">
+					
+					<ul class="list-group">
+						          <li class="list-group-item" data-ng-repeat="menu in list_facilities">
+						            <div class="checkbox">
+					                  <label class="i-checks">
+					                    <input  type="checkbox"
+					                          ng-init="menu.is_checked = (menu.is_checked==1 ? true : false)"
+                                              data-ng-model="menu.is_checked"
+                                              data-ng-change="completed(task)"
+                                       ><i></i>{{menu.name}}
+					                  </label>
+					                </div>
+
+						          </li>
+						        
+						        </ul>
+
+
+				</div>
+			</div>
+		</div>	 -->
+
+
+		
+
+
+
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading font-bold">
+					<i class="fa fa-list-alt fa-pencil"></i> Images
+				</div>
+				<div class="panel-body">
+					
+						<div class="hbox hbox-auto-xs hbox-auto-sm"   nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+						  
+						  <div class="col">
+
+						    <input type="file" nv-file-select="" id="fileInput" uploader="uploader"  />
+						  <br>
+						  <div class="hbox hbox-auto-xs">
+													<img ng-src="{{myImage}}" class="wrapper-sm b-a bg-white m-r-xs m-b-xs"/>
+								</div>
+						  </div>
+						</div>
+
+				</div>
+			</div>
+		</div>	
+
+
+
+		<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button class="btn btn-success" type="submit"
+									ng-disabled="loading() || masterForm.$invalid"
+									ng-click="save(master)">
+									{{buttonText}} <i class="fa fa-spinner fa-spin"
+										ng-show="loading()"></i>
+								</button>
+								<button class="btn btn-outline btn-warning" type="button"
+									ng-click="cancel()">Cancel</button>
+							</div>
+
+						</div>
+
+
+
+	</div>
+</div>

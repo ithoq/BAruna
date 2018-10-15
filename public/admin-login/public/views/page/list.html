@@ -1,0 +1,99 @@
+<div class="wrapper-md">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading font-bold">
+					<i class="fa fa-list-alt fa-fw"></i> {{title}}
+				</div>
+
+				<div class="row wrapper">
+					<div class="col-sm-6">
+						<a class="btn btn-primary" ng-click="create()"
+							>New</a>
+
+
+
+					</div>
+				</div>
+
+				<div class="panel-body">
+					<div class='row'>
+						<div class='col-md-3'>
+							 <select class="form-control input-lg" id="predicate" ng-model="criteria.key" ng-options="criteria_key.key as criteria_key.label  for criteria_key in criteria_key_list"></select>
+						</div>
+						<div class='col-md-9'>
+								<div class="input-group">
+							      <input class="form-control input-lg" ng-model="criteria.value" placeholder="Type keyword" type="text">
+							      <span class="input-group-btn">
+							        <button class="btn btn-lg btn-default" ng-click="pageChanged()" type="button">Search</button>
+							      </span>
+							    </div>
+						</div>
+					</div>
+
+				    <br>
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th width="200px">Action</th>
+									<th>Name</th>
+									<th>Images</th>
+									<th>Status</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="master in page.data">
+									<td  class="v-middle" align="center">
+										<button type="button" class="btn btn-warning btn-sm"
+											tooltip="Edit" tooltip-placement="left"
+											
+											ng-click="edit(master)">
+											<i class="fa fa-edit"></i>
+										</button>
+										<button type="button" class="btn btn-danger btn-sm"
+											tooltip="Delete" tooltip-placement="right"
+											
+											ng-delete-click="remove(master)"
+											>
+											<i class="fa fa-times"></i>
+										</button>
+										<a  class="btn btn-info btn-sm"
+											tooltip="View" tooltip-placement="left"
+											target="_blank" 
+											href="{{company.base_url}}page/{{master.slug}}">
+											View
+										</a>	
+									</td>
+
+									<td class="v-middle">{{master.name}}</td>
+								  <td class="v-middle">
+                                        <div class="inline bg-white wrapper-sm b-a">
+                                            <div class="bg-light">
+                                                <img src="{{company.base_url}}{{master.image_thumb}}" class="thumb-xl">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="v-middle">{{master.status==1?'Publish':'Draft'}}</td>
+
+								</tr>
+							</tbody>
+						</table>
+
+						<div style="text-align: center;">
+							<pagination total-items="totalItems" ng-model="currentPage"
+								max-size="maxSize" items-per-page="itemsPerPage"
+								ng-change="pageChanged()" boundary-links="true"></pagination>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+</div>

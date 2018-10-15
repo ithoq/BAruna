@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <p v-if="items.length === 0">No Item</p>
+      <ul>
+        <li v-for="item in items">{{item.name}} - <a href="#" v-on:click="removeItem(item)">remove</a> </li>
+      </ul>
+
+      {{item}}</br>
+
+      <input type="text" v-model="item"/>
+      <input type="button" v-on:click="addItem" value="add item"/>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.8/vue.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js">
+    </script>
+    <script type="text/javascript">
+      new Vue({
+        el: '#app',
+        data: {
+          items:[],
+          item:''
+        },
+        methods:{
+          addItem(){
+            axios.post('http://localhost/website-builder-api/public/todolist', {
+              item:{
+                name : this.item
+              }
+            }).then(response => {
+              this.items.push(response.data)
+              this.item = ''
+            })
+            //localStorage.setItem('items',JSON.stringify(this.items))
+          },
+          removeItem(item){
+            axios.delete('http://localhost/website-builder-api/public/todolist/${item}').then(response => {
+              const index = this.items.indexOf(item)
+              this.items.splice(index,1)
+            })
+
+            //localStorage.setItem('items',JSON.stringify(this.items))
+          }
+        },
+        created(){
+          axios.get('http://localhost/website-builder-api/public/todolist').then((response) => {
+            console.log(response.data)
+            this.items = response.data
+          })
+          //this.items = JSON.parse(localStorage.getItem('items')) || []
+        }
+      })
+    </script>
+  </body>
+</html>

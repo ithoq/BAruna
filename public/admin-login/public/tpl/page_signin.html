@@ -1,0 +1,44 @@
+<div class="container w-xxl w-auto-xs"	
+	ng-init="app.settings.container = false;">
+	<a href class="navbar-brand block m-t wrapper">{{app.name}}</a>
+	<div class="m-b-lg">
+		<form name="form" class="form-validation">
+			<div class="alert alert-danger" ng-show="notAuthenticated">
+				<div class="text-danger text-center">{{errorMessage}}</div>
+			</div>
+			<div class="list-group list-group-sm">
+				<div class="input-group m-b">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-user"></i></span> <input type="text"
+						placeholder="User Name" class="form-control"
+						ng-model="user.username" name="username" required>
+				</div>
+				<div class="input-group m-b">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-lock"></i></span> <input type="password"
+						placeholder="Password" class="form-control"
+						ng-model="user.password" name="password" required>
+				</div>
+
+				<div class="input-group m-b">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-lock"></i></span> <input type="text"
+						placeholder="Company Code" class="form-control"
+						ng-model="user.company_code"  required>
+				</div>
+
+			</div>
+			<button type="submit" class="btn btn-lg btn-primary btn-block"
+				ng-click="login(user)" ng-disabled='loading() || form.$invalid'>
+				Log in<i class="fa fa-spinner fa-spin" ng-show="loading()"></i>
+			</button>
+			
+			<div class="line line-dashed"></div>
+
+
+		</form>
+
+	</div>
+	<div class="text-center" ng-include="'public/tpl/blocks/page_footer.html'">
+		{% include 'blocks/page_footer.html' %}</div>
+</div>

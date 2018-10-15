@@ -1,0 +1,109 @@
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+
+<div class="wrapper-md">
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="panel panel-default">
+				<div class="panel-heading font-bold">
+					<i class="fa fa-list-alt fa-pencil"></i> {{title}}
+				</div>
+				<div class="panel-body">
+						
+						
+
+
+						<accordion >
+					    	<ul>	
+
+
+
+					    	<li  class="list-group-item" ng-repeat="(key,data) in master.value">
+					    		<accordion-group 
+					          is-open="data.open" class="b-info">
+					           <accordion-heading>
+					                  {{data.name}}
+					                  <span class="pull-right text-muted">
+					                  	{{data.url!='' ? 'Enabled' : 'Disabled'}}
+					                  	<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': data.open, 'fa-angle-right': !data.open}"></i>
+					              		</span>
+					              </accordion-heading>
+
+						          	<!-- <div class="row">
+								          <div class="col-lg-6"><h3>Active</h3></div>
+								          <div class="col-lg-6">
+								            <label class="i-switch i-switch-lg bg-dark m-t-xs m-r">
+								              <input type="checkbox" 
+								              ng-model='data.status'
+								              ng-change='save_list()'
+								              >
+								              <i></i>
+								            </label>
+								          </div>
+								   </div> -->
+
+
+								   
+
+							        <div class="form-group" ng-show="data.status==true">
+
+							        <form class="form-horizontal" name="masterFormProductEdit" class="form-validation">
+										
+										<div class="form-group">
+											<label class="col-sm-2 control-label">URL</label>
+											<div class="col-sm-10">
+												<input class="form-control"type="text"
+													ng-model="data.url"  />
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<button class="btn btn-success" type="submit"
+													ng-disabled="loading() || masterFormProductEdit.$invalid"
+													ng-click="save_list()">
+													Update<i class="fa fa-spinner fa-spin"
+														ng-show="loading()"></i>
+												</button>
+												
+											</div>
+
+										</div>
+
+									</form>
+								</div>
+
+							        <br>
+							        <p class='text-center'>
+					              	Move 
+					              	<a ng-hide="key==0" 
+					              	class='text-info' 
+					              	style="text-decoration: underline;" 
+					              	ng-click="up_one(key)">Up one</a> 
+					              	<a class='text-info' 
+					              	ng-hide="master.value.length==key+1"
+					              	ng-click="down_one(key)" 
+					              	style="text-decoration: underline;">Down one</a> 
+					              </p>	  
+
+					        </accordion-group>
+					    	</li>
+
+					      </ul>
+
+					          
+
+					    </accordion >  
+
+				</div>
+			</div>
+
+		</div>
+
+
+		
+
+		
+
+	</div>
+</div>
+

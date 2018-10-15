@@ -1,0 +1,94 @@
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<div class="wrapper-md">
+	<div class="row">
+		<div class="col-lg-9">
+			<div class="panel panel-default">
+				<div class="panel-heading font-bold">
+					<i class="fa fa-list-alt fa-pencil"></i> {{title}}
+				</div>
+				<div class="panel-body">
+					<form class="form-horizontal" name="masterForm" class="form-validation">
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Name *</label>
+							<div class="col-sm-10">
+								<input class="form-control" name="name" type="text"
+									ng-model="master.name"  required disabled="true" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Publication Date *</label>
+							<div class="col-sm-10">
+								<input class="form-control" name="date" type="date"
+									ng-model="master.date" required disabled="true" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Featured Image</label>
+							<div class="col-sm-10">
+
+									<div class="m-b">
+										<input type="file" nv-file-select=""  id="fileInput" uploader="uploader" />
+									</div>
+									<div class="hbox hbox-auto-xs">
+										<img ng-src="{{myImage}}" class="wrapper-sm b-a bg-white m-r-xs m-b-xs"/>
+								</div>
+						    </div>
+						</div>
+
+						<!-- <div class="form-group">
+							<label class="col-sm-2 control-label">Address</label>
+							<div class="col-sm-10">
+								<textarea class='form-control' ng-model='master.address' rows='2'></textarea>
+							</div>
+						</div>
+ -->
+
+						<!-- <div class="form-group"  >
+							<label class="col-sm-2 control-label">Publish</label>
+							<div class="col-sm-10">
+								 <input  type="checkbox"
+					                          ng-init="master.status = (master.status==1 ? true : false)"
+                                              data-ng-model="master.status"
+                                       >
+							</div>
+						</div> -->
+						<!-- 
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Publish</label>
+							<div class="col-sm-10">
+								<select class="form-control"  ng-model="master.status"
+                                      ng-options="combo_box.id as combo_box.name for combo_box in list_status"
+                                      required
+                                      >
+                                      </select>
+
+							</div>
+						</div> -->
+
+						<div class="form-group">
+								<label class="col-sm-2 control-label"></label>
+											<div class="col-sm-10 pull-left">
+												<button class="btn btn-success" type="submit"
+													ng-disabled="loading() || masterForm.$invalid"
+													ng-click="save(master)">
+													{{buttonText}} <i class="fa fa-spinner fa-spin"
+														ng-show="loading()"></i>
+												</button>
+												<button class="btn btn-outline btn-warning" type="button"
+													ng-click="cancel()">Cancel</button>
+											</div>
+
+										</div>
+
+					</form>
+				</div>
+			</div>
+
+		</div>
+
+
+
+	</div>
+</div>

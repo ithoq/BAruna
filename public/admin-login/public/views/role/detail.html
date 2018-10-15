@@ -1,0 +1,63 @@
+<div class="wrapper-md">
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="panel panel-default">
+				<div class="panel-heading font-bold">
+					<i class="fa fa-list-alt fa-pencil"></i> {{title}}
+				</div>
+				<div class="panel-body">
+					<div class="row row-sm">
+						<div class="col-md-12">
+						      <div class="panel b-a">
+						        <div class="text-center bg-info no-border">
+						           <h4 class="text-u-c m-b-none">Role</h4>
+							          <h2 class="m-t-none">
+							            <span class="text-2x text-lt">Administrator</span>
+							          </h2>
+						        </div>
+						        <ul class="list-group">
+						          <li class="list-group-item" data-ng-repeat="menu in menu_list">
+						            <div class="checkbox">
+					                  <label class="i-checks">
+					                    <input  type="checkbox"
+					                          ng-init="menu.is_checked = (menu.is_checked==1 ? true : false)"
+                                              data-ng-model="menu.is_checked"
+                                              data-ng-change="completed(task)"
+                                       ><i></i>{{menu.name}}
+					                  </label>
+					                </div>
+
+						          </li>
+						        
+						        </ul>
+						        <div class="panel-footer text-center">
+						        	<ul class="list-inline clearfix">
+				                        <li class="first-item">
+				                            <input type="checkbox"
+				                                   id="toggle-all"
+				                                   data-ng-model="allChecked"
+				                                   data-ng-change="markAll(allChecked)">
+				                            <label for="toggle-all">Mark all</label>
+				                        </li>
+				                    </ul>	
+				                  <a class="btn btn-info font-bold m" 
+									ng-disabled="loading()"
+									ng-click="submit()">
+									Update <i class="fa fa-spinner fa-spin"
+										ng-show="loading()"></i>
+								</a>	
+
+								<button class="btn btn-outline btn-warning" type="button"
+									ng-click="cancel()">Cancel</button>
+
+										  
+						        </div>
+						      </div>
+						    </div>
+					</div>	
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

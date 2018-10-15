@@ -1,0 +1,117 @@
+--- new ---
+ALTER TABLE `room`
+	ADD COLUMN `total_available` INT(11) NULL DEFAULT NULL AFTER `slug`;
+
+    ALTER TABLE `rates_room_detail`
+	ADD COLUMN `room_id` VARCHAR(36) NULL DEFAULT NULL AFTER `id`;
+
+	ALTER TABLE `booking`
+		ADD COLUMN `check_in` DATE NULL DEFAULT NULL AFTER `booking_date`,
+		ADD COLUMN `check_out` DATE NULL DEFAULT NULL AFTER `check_in`,
+		ADD COLUMN `rates_room_id` VARCHAR(36) NULL DEFAULT NULL AFTER `company_id`,
+		ADD COLUMN `infant` INT(11) NULL DEFAULT NULL AFTER `child`;
+
+		ALTER TABLE `booking`
+		  ADD COLUMN `rf_number` VARCHAR(36) NOT NULL AFTER `id`,
+			ADD COLUMN `guest_name` VARCHAR(255) NULL DEFAULT NULL AFTER `check_out`,
+			CHANGE COLUMN `adult` `adult` INT(11) NULL DEFAULT NULL AFTER `guest_name`,
+			CHANGE COLUMN `child` `child` INT(11) NULL DEFAULT NULL AFTER `adult`,
+			CHANGE COLUMN `infant` `infant` INT(11) NULL DEFAULT NULL AFTER `child`,
+			CHANGE COLUMN `name` `contact_name` VARCHAR(255) NULL DEFAULT NULL AFTER `infant`,
+			CHANGE COLUMN `address` `contact_address` TEXT NULL AFTER `contact_name`,
+			CHANGE COLUMN `phone` `contact_phone` VARCHAR(45) NULL DEFAULT NULL AFTER `contact_address`,
+			ADD COLUMN `contact_email` VARCHAR(45) NULL DEFAULT NULL AFTER `contact_phone`,
+			CHANGE COLUMN `hotel_name` `hotel_name` VARCHAR(100) NULL DEFAULT NULL AFTER `contact_email`,
+			CHANGE COLUMN `product_id` `product_id` VARCHAR(36) NULL DEFAULT NULL AFTER `activities_date`,
+			CHANGE COLUMN `company_id` `company_id` VARCHAR(36) NULL DEFAULT NULL AFTER `product_id`,
+			CHANGE COLUMN `rates_room_id` `rates_room_id` VARCHAR(36) NULL DEFAULT NULL AFTER `company_id`,
+			CHANGE COLUMN `email` `email` VARCHAR(100) NULL DEFAULT NULL AFTER `message`;
+
+ALTER TABLE `booking`
+			CHANGE COLUMN `guest_name` `guest_first_name` VARCHAR(255) NULL DEFAULT NULL AFTER `check_out`,
+			ADD COLUMN `guest_last_name` VARCHAR(255) NULL DEFAULT NULL AFTER `guest_first_name`,
+			ADD COLUMN `contact_address2` TEXT NULL AFTER `contact_address`,
+			CHANGE COLUMN `contact_name` `contact_first_name` VARCHAR(255) NULL DEFAULT NULL AFTER `infant`,
+			ADD COLUMN `contact_last_name` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_first_name`,
+			ADD COLUMN `city` VARCHAR(100) NULL DEFAULT NULL AFTER `email`,
+			ADD COLUMN `state` VARCHAR(100) NULL DEFAULT NULL AFTER `city`,
+			ADD COLUMN `country` VARCHAR(100) NULL DEFAULT NULL AFTER `state`,
+			ADD COLUMN `post_code` VARCHAR(5) NULL DEFAULT NULL AFTER `country`,
+			ADD COLUMN `organisation` VARCHAR(255) NULL DEFAULT NULL AFTER `post_code`,
+			ADD COLUMN `eta_time` VARCHAR(50) NULL DEFAULT NULL AFTER `organisation`,
+			ADD COLUMN `special_request1` VARCHAR(255) NULL DEFAULT NULL AFTER `eta_time`,
+			ADD COLUMN `special_request2` VARCHAR(255) NULL DEFAULT NULL AFTER `special_request1`,
+			ADD COLUMN `payment_method` VARCHAR(50) NULL DEFAULT NULL AFTER `special_request2`,
+			ADD COLUMN `amount_due` DECIMAL(15,0) NULL DEFAULT NULL AFTER `updated_at`,
+			ADD COLUMN `status` TINYINT(1) NOT NULL DEFAULT '0' AFTER `amount_due`,
+			ADD COLUMN `status_str` ENUM('Inprogress','Pending','Confirmed','Cancelled','Done') NOT NULL DEFAULT 'Inprogress' AFTER `status`;
+
+
+
+			CREATE TABLE `booking_payments` (
+				`booking_id` INT(10) NOT NULL,
+				`payment_type` VARCHAR(40) NOT NULL,
+				`payment_amount` DECIMAL(15,2) NOT NULL,
+				PRIMARY KEY (`booking_id`, `payment_type`),
+				INDEX `booking_id` (`booking_id`)
+			)
+			COLLATE='utf8_general_ci'
+			ENGINE=InnoDB
+			;
+
+			CREATE TABLE `activity_log` (
+	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`user_id` INT(11) NULL DEFAULT NULL,
+	`text` VARCHAR(255) NOT NULL COLLATE 'utf8_unicode_ci',
+	`ip_address` VARCHAR(64) NOT NULL COLLATE 'utf8_unicode_ci',
+	`created_at` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`updated_at` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_unicode_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=0
+;
+
+
+ALTER TABLE `room_available`
+	ADD UNIQUE INDEX `dates_room_id_company_id` (`dates`, `room_id`, `company_id`);
+
+
+
+
+
+--- end new ---
+
+ALTER TABLE `company`
+ADD COLUMN `type` ENUM('GROUP','SINGLE') NULL DEFAULT 'SINGLE' AFTER `google_captcha_secret_key`;
+
+CREATE TABLE `group_company_detail` (
+  `id` VARCHAR(36) NOT NULL,
+  `group_company_id` VARCHAR(45) NULL,
+  `company_id` VARCHAR(45) NULL,
+  `created_at` TIMESTAMP NULL,
+  `created_by` VARCHAR(100) NULL,
+  `updated_at` TIMESTAMP NULL,
+  `updated_by` VARCHAR(100) NULL,
+  PRIMARY KEY (`id`));
+
+
+  CREATE TABLE `area` (
+    `id` VARCHAR(36) NOT NULL,
+    `name` VARCHAR(100) NULL,
+    `image` VARCHAR(255) NULL,
+    `image_thumb` VARCHAR(255) NULL,
+    `company_id` VARCHAR(45) NULL,
+    `description` TEXT NULL,
+    `created_at` TIMESTAMP NULL,
+    `created_by` VARCHAR(100) NULL,
+    `updated_at` TIMESTAMP NULL,
+    `updated_by` VARCHAR(100) NULL,
+    `deleted_at` TIMESTAMP NULL,
+    `deleted_by` VARCHAR(100) NULL,
+    PRIMARY KEY (`id`));
+
+
+    ALTER TABLE `area`
+ADD COLUMN `slug` VARCHAR(100) NULL AFTER `deleted_by`;

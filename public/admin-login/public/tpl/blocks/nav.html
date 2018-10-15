@@ -1,0 +1,188 @@
+<!-- list -->
+<ul class="nav">
+
+
+  <li ui-sref-active="active">
+		    <a ui-sref="app.dashboard">
+		      <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+		      <span class="font-bold">Dashboard</span>
+		    </a>
+  </li>
+
+
+<li  class="line dk"></li>
+<li ><a href class="auto">
+  <span class="pull-right text-muted">
+    <i class="fa fa-fw fa-angle-right text"></i> <i class="fa fa-fw fa-angle-down text-active"></i>
+  </span>
+  <i class="glyphicon glyphicon-pencil icon text-info-dker"></i> 
+  <span class="font-bold">Blog</span>
+</a>
+  <ul class="nav nav-sub dk">
+    <li ui-sref-active="active" has-permission="blog-edit"><a ui-sref="app.blog-edit({  master : {} })"> <span>New Post</span>
+    </a></li>
+
+    <li ui-sref-active="active" has-permission="blog-list"><a ui-sref="app.blog"> <span>Blog</span>
+    </a></li>
+    <li ui-sref-active="active" has-permission="blog-category"><a ui-sref="app.post_category"> <span>Blog Categories</span>
+    </a></li>
+
+
+
+  </ul>
+</li>
+
+<li  class="line dk"></li>
+
+
+
+   <li  class="line dk"></li>
+    <li ><a href class="auto"> <span class="pull-right text-muted">
+          <i class="fa fa-fw fa-angle-right text"></i> <i
+          class="fa fa-fw fa-angle-down text-active"></i>
+      </span> <i class="glyphicon glyphicon-shopping-cart icon text-info-dker"></i> <span
+        class="font-bold">Product</span>
+    </a>
+      <ul class="nav nav-sub dk">
+
+        <li ui-sref-active="active" has-permission="product-list"><a ui-sref="app.product"> <span>Product</span>
+        </a></li>
+
+        <li ui-sref-active="active" has-permission="product-category"><a ui-sref="app.category"> <span>Categories</span>
+        </a></li>
+
+
+      </ul>
+    </li>
+
+
+
+
+
+
+
+<li  class="line dk"></li>
+<li ><a href class="auto"> <span class="pull-right text-muted">
+      <i class="fa fa-fw fa-angle-right text"></i> <i
+      class="fa fa-fw fa-angle-down text-active"></i>
+  </span> <i class="glyphicon glyphicon-book icon text-info-dker"></i> <span
+    class="font-bold">Pages</span>
+</a>
+  <ul class="nav nav-sub dk">
+    <li ui-sref-active="active" has-permission="page-edit"><a ui-sref="app.page-edit({  master : {} })"> <span>Add Page</span>
+    </a></li>
+
+    <li ui-sref-active="active" has-permission="page-list"><a ui-sref="app.page"> <span>All Pages</span>
+    </a></li>
+
+
+  </ul>
+</li>
+
+<li  class="line dk"></li>
+<li ><a href class="auto">
+  <span class="pull-right text-muted">
+    <i class="fa fa-fw fa-angle-right text"></i> <i class="fa fa-fw fa-angle-down text-active"></i>
+  </span>
+  <i class="glyphicon glyphicon-book icon text-primary-dker"></i> 
+  <span class="font-bold">Report</span>
+</a>
+  <ul class="nav nav-sub dk">
+    <li ui-sref-active="active" has-permission="report-edit"><a ui-sref="app.report-edit({  master : {} })"> <span>New Report</span>
+    </a></li>
+    <li ui-sref-active="active" has-permission="report-list"><a ui-sref="app.report"> <span>Report</span>
+    </a></li>
+    <li ui-sref-active="active" has-permission="report-category"><a ui-sref="app.report_category"> <span>Report Categories</span>
+    </a></li>
+
+
+
+  </ul>
+</li>
+
+<li  class="line dk"></li>
+<li ><a href class="auto">
+  <span class="pull-right text-muted">
+    <i class="fa fa-fw fa-angle-right text"></i> <i class="fa fa-fw fa-angle-down text-active"></i>
+  </span>
+  <i class="glyphicon glyphicon-stats icon text-warning-lter"></i> 
+  <span class="font-bold">Credit</span>
+</a>
+  <ul class="nav nav-sub dk">
+    <li ui-sref-active="active" has-permission="credit-list"><a ui-sref="app.add-credit"> <span>Credit</span>
+    </a></li>
+    <li ui-sref-active="active" has-permission="credit-category"><a ui-sref="app.add-credit_category"> <span>Credit Categories</span>
+    </a></li>
+
+
+
+  </ul>
+</li>
+
+<li  class="line dk"></li>
+<li ><a href class="auto">
+  <span class="pull-right text-muted">
+    <i class="fa fa-fw fa-angle-right text"></i> <i class="fa fa-fw fa-angle-down text-active"></i>
+  </span>
+  <i class="glyphicon glyphicon-bitcoin icon text-danger-lter"></i> 
+  <span class="font-bold">Interest Rate</span>
+</a>
+  <ul class="nav nav-sub dk">
+    <li ui-sref-active="active" has-permission="interest-rate-edit"><a ui-sref="app.add-interest_rate-edit"> <span>New Interest Rate</span>
+    </a></li>
+    <li ui-sref-active="active" has-permission="interest-rate-list"><a ui-sref="app.add-interest_rate"> <span>Interest Rate</span>
+    </a></li>
+
+
+
+  </ul>
+</li>
+
+<li  class="line dk"></li>
+<li ><a href class="auto"> <span class="pull-right text-muted">
+      <i class="fa fa-fw fa-angle-right text"></i> <i
+      class="fa fa-fw fa-angle-down text-active"></i>
+  </span> <i class="glyphicon  glyphicon-picture icon text-success"></i> <span
+    class="font-bold">Media</span>
+</a>
+  <ul class="nav nav-sub dk">
+
+    <li ui-sref-active="active" has-permission="gallery-list"><a ui-sref="app.gallery"> <span>Gallery</span>
+    </a></li>
+
+    <li ui-sref-active="active" has-permission="gallery-category"><a ui-sref="app.gallery_category"> <span>Gallery Category</span>
+    </a></li>
+
+
+
+  </ul>
+</li>
+
+
+<li  class="line dk"></li>
+<li ><a href class="auto"> <span class="pull-right text-muted">
+      <i class="fa fa-fw fa-angle-right text"></i> <i
+      class="fa fa-fw fa-angle-down text-active"></i>
+  </span> <i class="glyphicon  glyphicon-wrench icon text-success"></i> <span
+    class="font-bold">Setting</span>
+</a>
+  <ul class="nav nav-sub dk">
+
+    <li ui-sref-active="active" has-permission="company-profile"><a ui-sref="app.company"> <span>Company Profile</span>
+    </a></li>
+
+    <li ui-sref-active="active" has-permission="slider"><a ui-sref="app.slider"> <span>Slider</span>
+    </a></li>
+
+      <li ui-sref-active="active" has-permission="social-media"><a ui-sref="app.social_media"> <span>Social Media</span>
+    </a></li>
+
+    <li ui-sref-active="active" has-permission="tags"><a ui-sref="app.tags"> <span>Tags</span>
+    </a></li>
+
+  </ul>
+</li>
+
+
+
+</ul>

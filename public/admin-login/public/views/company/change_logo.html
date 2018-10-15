@@ -1,0 +1,53 @@
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+
+
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Change Logo</h1>
+</div>
+<div class="wrapper-md" >
+  <div class="m-b">
+    Select an image file (size must be 160x60)
+    <input type="file" id="fileInput" />
+  </div>
+  <div class="hbox hbox-auto-xs">
+
+
+
+          <img ng-src="{{myImage}}" class="wrapper-sm b-a bg-white m-r-xs m-b-xs"/>
+
+
+  <br>
+  <!-- <div class="hbox hbox-auto-xs">
+    <div class="col">
+      <div class="wrapper-sm b-a bg-white m-r-xs m-b-xs">
+        <div class="bg-light" style="height:320px">
+          <img-crop 
+            image="myImage" 
+            result-image="myCroppedImage"
+            
+            area-type="{{cropType}}"
+          ></img-crop>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="inline bg-white wrapper-sm b-a">
+        <div class="cropped">
+          <img ng-src="{{myCroppedImage}}" />
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="btn-group m-t">
+    <button class="btn btn-success" type="submit"
+                  ng-disabled="loading()"
+                  ng-click="Upload()">
+                  Upload <i class="fa fa-spinner fa-spin"
+                    ng-show="loading()"></i>
+                </button>
+
+     
+      <!-- <label class="btn btn-default" ng-model="cropType" btn-radio="'circle'">Circle</label>
+      <label class="btn btn-default" ng-model="cropType" btn-radio="'square'">Square</label> -->
+  </div>
+<div>

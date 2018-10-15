@@ -1,0 +1,128 @@
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+
+
+<div class="wrapper-md">
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="panel panel-default">
+				<div class="panel-heading font-bold">
+					<i class="fa fa-list-alt fa-pencil"></i> {{title}}
+				</div>
+				<div class="panel-body">
+					<form class="form-horizontal" name="masterForm" class="form-validation">
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Code *</label>
+							<div class="col-sm-10">
+								<input class="form-control" ng-disabled='true' name="code" type="text"
+									ng-model="master.code" autofocus  required />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Name *</label>
+							<div class="col-sm-10">
+								<input class="form-control" name="name" type="text"
+									ng-model="master.name" required />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Address *</label>
+							<div class="col-sm-10">
+								<input class="form-control" name="address" type="text"
+									ng-model="master.address" required />
+							</div>
+						</div>
+
+						
+						
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Phone</label>
+							<div class="col-sm-10">
+								<input class="form-control" name="phone" type="text"
+									ng-model="master.phone"  />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Tlp</label>
+							<div class="col-sm-10">
+								<input class="form-control" name="tlp" type="text"
+									ng-model="master.tlp"  />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Email</label>
+							<div class="col-sm-10">
+								<input class="form-control" name="email" type="text"
+									ng-model="master.email" required />
+							</div>
+						</div>
+
+
+					<div class="form-group">
+							<label class="col-sm-2 control-label">Description</label>
+							<div class="col-sm-10">
+								<div text-angular ng-model="master.description" class="btn-groups"></div>
+							</div>
+						</div>
+
+						<!-- <div class="form-group">
+							<label class="col-sm-2 control-label">Youtube URL</label>
+							<div class="col-sm-10">
+								<input class="form-control" type="text"
+									ng-model="master.youtube_url"  />
+							</div>
+						</div> -->
+
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">SEO Title</label>
+							<div class="col-sm-10">
+								<input class="form-control" type="text"
+									ng-model="master.meta_title"  />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Focus Keyword</label>
+							<div class="col-sm-10">
+								<input class="form-control"  type="text"
+									ng-model="master.meta_keyword"   />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Meta Description</label>
+							<div class="col-sm-10">
+								<textarea class='form-control' ng-model='master.meta_description' rows='2'></textarea>
+							</div>
+						</div>
+
+
+						
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button class="btn btn-success" type="submit"
+									ng-disabled="loading() || masterForm.$invalid"
+									ng-click="save(master)">
+									{{buttonText}} <i class="fa fa-spinner fa-spin"
+										ng-show="loading()"></i>
+								</button>
+								<button class="btn btn-outline btn-warning" type="button"
+									ng-click="cancel()">Cancel</button>
+							</div>
+
+						</div>
+
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

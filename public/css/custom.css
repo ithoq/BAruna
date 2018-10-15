@@ -1,0 +1,190 @@
+.l-profile-image{
+		height: auto;
+		width: 100%;
+}
+@media (min-width: 1200px){
+	#main .wrapper-body .pages-detail .container-fluid .row .p-detail .team .row .m-team {
+	    width: 50%;
+	}
+
+	#main header#header .container-fluid .wrapper-header .nav ul li a {
+        padding: 0 15px;
+  }
+
+	.l-profile-image{
+			height: 250px;
+	}
+}
+@media (min-width: 1400px){
+    #main .wrapper-body .pages-detail .container-fluid .row .p-detail .list-3-cols .row .list {
+        width: 33.33%;
+        height: 500px;
+    }
+
+    #main header#header .container-fluid .wrapper-header .nav ul li a {
+        padding: 0 15px;
+    }
+
+		.l-profile-image{
+				height: 250px;
+		}
+}
+@media (min-width: 1200px){
+    #main .wrapper-body .pages-detail .container-fluid .row .p-detail .list-3-cols .row .list {
+        width: 50%;
+        height: 500px;
+    }
+
+    #main header#header .container-fluid .wrapper-header .nav ul li a {
+        padding: 0 15px;
+    }
+
+		.l-profile-image{
+				height: 250px;
+		}
+}
+@media (min-width: 992px){
+    #main .wrapper-body .pages-detail .container-fluid .row .p-detail .list-3-cols .row .list {
+        width: 50%;
+        height: 500px;
+    }
+
+    #main header#header .container-fluid .wrapper-header .nav ul li a {
+        padding: 0 15px;
+    }
+
+		.l-profile-image{
+				height: 250px;
+		}
+}
+@media (min-width: 768px){
+    #main .wrapper-body .pages-detail .container-fluid .row .p-detail .list-3-cols .row .list {
+        width: 50%;
+        height: 500px;
+    }
+
+    #main header#header .container-fluid .wrapper-header .nav ul li a {
+        padding: 0 15px;
+    }
+
+		.l-profile-image{
+				height: 250px;
+		}
+}
+@media (min-width: 554px){
+    #main .wrapper-body .pages-detail .container-fluid .row .p-detail .list-3-cols .row .list {
+        height: 500px;
+    }
+
+    #main header#header .container-fluid .wrapper-header .nav ul li a {
+        padding: 0 15px;
+    }
+
+		.l-profile-image{
+				height: auto;
+				width: 100%;
+		}
+}
+@media (min-width: 480px){
+    #main .wrapper-body .pages-detail .container-fluid .row .p-detail .list-3-cols .row .list {
+        height: 400px;
+    }
+
+    #main header#header .container-fluid .wrapper-header .nav ul li a {
+        padding: 0 15px;
+    }
+
+		.l-profile-image{
+				height: auto;
+				width: 100%;
+		}
+}
+#main .wrapper-body .pages-detail .container-fluid .row .p-detail .team .row .l-team .wrapper-team .desc h2{
+    height: 70px;
+}
+#main .wrapper-body .p-title .black-mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none; 
+}
+.btn{
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.btn-warning{
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+.btn-warning:hover {
+    color: #fff;
+    background-color: #ec971f;
+    border-color: #d58512;
+}
+
+.btn-email{
+	width: 100%;
+	display: block;
+	text-decoration:none;
+	color: #4ea0ff;
+	border-color: #4ea0ff;
+}
+
+.btn-email:hover{
+	width: 100%;
+	display: block;
+	text-decoration:none;
+	color: #ffffff;
+	background-color: #4ea0ff;
+	border-color: #4ea0ff;
+}
+
+.quote h3{
+    font-size: 30px;
+}
+
+.quote blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+.quote blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+.quote blockquote p {
+  display: block;
+  margin-bottom: 4px !important;
+}
+.share-button {position: fixed;left: -25px;width: 75px;height: 50px;transition: 0.3s ease-in-out;z-index: 10;}
+.share-button:hover {left: 0;}
+.share-wa{background: #65BC54;top: 50%;}
+.share-fb{background: #3b579d;top: 50%;margin-top:50px;}
+.share-ig{background: #d12798;top: 50%;margin-top:100px;}
+.share-yt{background: #c8312b;top: 50%;margin-top:150px;}

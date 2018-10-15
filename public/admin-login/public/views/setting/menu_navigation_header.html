@@ -1,0 +1,45 @@
+<div class="wrapper-md">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading font-bold">
+					<i class="fa fa-list-alt fa-fw"></i> {{title}}
+				</div>
+
+
+				<div class="panel-body">
+					
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th width="80px">Action</th>
+									<th>Name</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="master in list_menu_navigation_header">
+									<td  align="center">
+										<button type="button" class="btn btn-info btn-sm"
+											tooltip="Detail" tooltip-placement="left"
+											ng-click="detail(master)">
+											detail
+										</button>
+									</td>
+									<td class="v-middle">{{master.name}}</td>
+								</tr>
+							</tbody>
+						</table>
+
+						
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+</div>

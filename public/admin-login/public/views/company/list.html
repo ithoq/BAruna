@@ -1,0 +1,138 @@
+<div class="wrapper-md">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading font-bold">
+					<i class="fa fa-list-alt fa-fw"></i> {{title}}
+				</div>
+
+				<div class="row wrapper">
+					<div class="col-sm-2">
+						<a class="btn btn-primary"
+							 ui-sref="app.company-edit({master:current})">Edit</a>
+					</div>
+				</div>
+
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table class="table table-striped b-t b-light">
+							<tbody>
+								<tr>
+									<td><label class="font-bold">Code</label></td>
+									<td>{{master.code}}</td>
+								</tr>
+								<tr>
+									<td><label class="font-bold">Name</label></td>
+									<td>{{master.name}}</td>
+								</tr>
+								<tr>
+									<td><label class="font-bold">Address</label></td>
+									<td>{{master.address}}</td>
+								</tr>
+								<tr>
+									<td><label class="font-bold">Base Url</label></td>
+									<td>{{master.base_url}}</td>
+								</tr>
+								<!-- <tr>
+									<td><label class="font-bold">Youtube Url</label></td>
+									<td>{{master.youtube_url}}</td>
+								</tr> -->
+								<tr>
+									<td><label class="font-bold">Phone</label></td>
+									<td>{{master.phone}}</td>
+								</tr>
+
+								<tr>
+									<td><label class="font-bold">Tlp</label></td>
+									<td>{{master.tlp}}</td>
+								</tr>
+								<tr>
+									<td><label class="font-bold">Email</label></td>
+									<td>{{master.email}}</td>
+								</tr>
+
+								<tr>
+									<td><label class="font-bold">Meta Title</label></td>
+									<td>{{master.meta_title}}</td>
+								</tr>
+
+								<tr>
+									<td><label class="font-bold">Meta Keyword</label></td>
+									<td>{{master.meta_keyword}}</td>
+								</tr>
+
+								<tr>
+									<td><label class="font-bold">Meta Description</label></td>
+									<td><p ng-bind-html="master.meta_description"></p></td>
+								</tr>
+								
+								<tr>
+									<td><label class="font-bold">Logo</label></td>
+									<td>
+										<div class="col" >
+										      <div class="inline bg-white wrapper-sm b-a">
+										        <div class="bg-light">
+										          <img src="{{company.base_url}}{{master.logo}}" width="200px" />
+										        </div>
+										      </div>
+										    </div>
+										    <br>
+										    <a class="btn btn-primary"
+							                    ui-sref="app.company-edit-logo({master:current})">Change Logo</a>
+										    
+
+										
+									</td>
+								</tr>
+
+
+							  <!-- <tr>
+									<td><label class="font-bold">Image Youtube</label></td>
+									<td>
+										<div class="col" >
+										      <div class="inline bg-white wrapper-sm b-a">
+										        <div class="bg-light">
+										          <img src="{{company.base_url}}{{master.image}}" width="200px" />
+										        </div>
+										      </div>
+										    </div>
+										    <br>
+										    <a class="btn btn-primary"
+							                    ui-sref="app.company-edit-image({master:current})">Change Image Youtube</a>
+										    
+
+										
+									</td>
+								</tr> -->
+
+
+								<!-- <tr>
+									<td><label class="font-bold">Tripadvisor Logo</label></td>
+									<td>
+										<div class="col" >
+										      <div class="inline bg-white wrapper-sm b-a">
+										        <div class="bg-light">
+										          <img src="{{master.tripadvisor_logo}}" width="200px" />
+										        </div>
+										      </div>
+										    </div>
+										    <br>
+										    <a class="btn btn-primary"
+							                    ui-sref="app.company-edit-tripadvisor({master:current})">Change Tripadvisor</a>
+									</td>
+								</tr> -->
+
+
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+</div>

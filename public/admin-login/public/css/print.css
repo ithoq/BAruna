@@ -1,0 +1,136 @@
+ @media print
+{
+
+body{
+     font-size:30px;
+}
+
+
+.hidden-print{display:none!important}
+
+}
+
+a{
+    text-decoration: none;
+}
+
+div.divFooter {
+            max-width:800px;
+            position: fixed;
+            bottom: 0;
+            font-size:12px;
+            text-align:center; 
+            line-height:12px;
+            font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color:#555;
+        }
+
+
+
+.invoice-box{
+        max-width:800px;
+        margin:auto;
+        font-size:12px;
+        line-height:24px;
+        font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color:#555;
+    }
+    
+    .invoice-box table{
+        width:100%;
+          font-size:12px;
+        line-height:inherit;
+        text-align:left;
+    }
+    
+    .invoice-box table td{
+        padding-left:5px;
+        vertical-align:top;
+    }
+    
+    .form-control
+  {
+    border: 0;
+    padding:0;
+    overflow:visible;
+  }
+
+    
+    .invoice-box table tr.top table td{
+        padding-bottom:4px;
+    }
+    
+    .invoice-box table tr.top table td.title , .title{
+        font-size:18px;
+        line-height:45px;
+        color:#333;
+    }
+
+    .invoice-box table tr.top table td.text-box , .text-box{
+        font-size:14px;
+        line-height:30px;
+        height: 30px;
+        width: 150px;
+        border:1px solid #58666e;
+        
+    }
+
+    .text-column{
+        width: 50px!important;
+    }
+    
+    .invoice-box table tr.information table td{
+        padding-bottom:40px;
+    }
+    
+    .invoice-box table tr.heading th{
+        
+        border-bottom:1px solid black;
+        border-top:1px solid black;
+        font-weight:bold;
+    }
+    
+    .invoice-box table tr.details td{
+        padding-bottom:20px;
+    }
+    
+    .invoice-box table tr.item td{
+        border-bottom:1px solid #eee;
+    }
+    
+    .invoice-box table tr.item.last td{
+        border-bottom:none;
+    }
+    
+   
+     .total{
+        border-bottom:1px solid #eee;
+        font-weight:bold;
+    }
+
+    .total .border{
+        border-bottom:1px solid #eee;
+        font-weight:bold;
+    }
+
+    .text-right{
+        text-align:right;
+    }
+
+    .text-center{
+     text-align:center;   
+    }
+
+    @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td{
+            width:100%;
+            display:block;
+            text-align:center;
+        }
+        
+        .invoice-box table tr.information table td{
+            width:100%;
+            display:block;
+            text-align:center;
+        }
+    }

@@ -1,0 +1,741 @@
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+
+<div class="wrapper-md">
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-heading font-bold">
+					<i class="fa fa-list-alt fa-pencil"></i> {{title}}
+				</div>
+				<div class="panel-body">
+
+						<accordion >
+					    	<ul>
+					    	<li  class="list-group-item" ng-repeat="(key,data) in master.value">
+					          <accordion-group
+
+					          is-open="data.open" class="b-info">
+					              <accordion-heading>
+					                  {{data.label}}
+					                  <span class="pull-right text-muted">
+					                  	{{data.type}}
+					                  	<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': data.open, 'fa-angle-right': !data.open}"></i>
+					              		</span>
+					              </accordion-heading>
+
+
+					               <div ng-show="data.type=='PAGES'">
+					              		<form class="form-horizontal" name="masterFormEdit" class="form-validation">
+
+					              	    <div class="form-group">
+											<label class="col-sm-2 control-label">Page</label>
+											<div class="col-sm-10">
+												<input class="form-control" ng-disabled='true' type="text"
+													ng-model="data.name"  />
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Label</label>
+											<div class="col-sm-10">
+												<input class="form-control"  type="text"
+													ng-model="data.label"  />
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<button class="btn btn-success" type="submit"
+													ng-disabled="loading() || masterFormEdit.$invalid"
+													ng-click="save_all()">
+													Update<i class="fa fa-spinner fa-spin"
+														ng-show="loading()"></i>
+												</button>
+
+												<button class="btn btn-danger" type="button"
+													ng-delete-click="remove(key)">
+													Delete
+												</button>
+
+											</div>
+
+										</div>
+
+									</form>
+
+
+					              </div>
+
+
+
+					               <div ng-show="data.type=='CATEGORIES'">
+					              		<form class="form-horizontal" name="masterFormEdit" class="form-validation">
+
+					              	    <div class="form-group">
+											<label class="col-sm-2 control-label">Category</label>
+											<div class="col-sm-10">
+												<input class="form-control" ng-disabled='true' type="text"
+													ng-model="data.name"  />
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Label</label>
+											<div class="col-sm-10">
+												<input class="form-control"  type="text"
+													ng-model="data.label"  />
+											</div>
+										</div>
+
+
+										<div class="form-group">
+			 							<label class="col-sm-2 control-label">Sub Menu</label>
+			 							<div class="col-sm-10">
+			 								<div class="checkbox">
+			 	 								 <label class="i-checks">
+			 	 									 <input  type="checkbox"
+			 	 															 data-ng-model="data.data.include_sub_menu"
+			 	 												><i></i>Include Sub menu from product
+			 	 								 </label>
+			 	 							 </div>
+			 							</div>
+			 						</div>
+
+
+
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<button class="btn btn-success" type="submit"
+													ng-disabled="loading() || masterFormEdit.$invalid"
+													ng-click="save_all()">
+													Update<i class="fa fa-spinner fa-spin"
+														ng-show="loading()"></i>
+												</button>
+
+												<button class="btn btn-danger" type="button"
+													ng-delete-click="remove(key)">
+													Delete
+												</button>
+
+											</div>
+
+										</div>
+
+									</form>
+
+
+
+					              </div>
+
+
+					              <div ng-show="data.type=='GALLERY'">
+					              		<form class="form-horizontal" name="masterFormEdit" class="form-validation">
+
+
+
+										<div class="form-group">
+											<div class="col-sm-12">
+
+												 <ul class="list-group">
+										          <li class="list-group-item" data-ng-repeat="gal in data.data_label">
+										           {{gal}}
+
+										          </li>
+										        </ul>
+
+												<button class="btn btn-danger" type="button"
+													ng-delete-click="remove(key)">
+													Delete
+												</button>
+
+											</div>
+
+										</div>
+
+									</form>
+
+
+					              </div>
+
+
+
+					              <div ng-show="data.type=='CUSTOM_LINK'">
+					              		<form class="form-horizontal" name="masterFormEdit" class="form-validation">
+
+															<div class="form-group">
+															<label class="col-sm-2 control-label">Label</label>
+															<div class="col-sm-10">
+																<input class="form-control"  type="text"
+																	ng-model="data.label"  />
+															</div>
+														</div>
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">URL</label>
+											<div class="col-sm-10">
+												<input class="form-control" type="text"
+													ng-model="data.data.url"  />
+											</div>
+										</div>
+
+
+
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<button class="btn btn-success" type="submit"
+													ng-disabled="loading() || masterFormEdit.$invalid"
+													ng-click="save_all()">
+													Update<i class="fa fa-spinner fa-spin"
+														ng-show="loading()"></i>
+												</button>
+
+												<button class="btn btn-danger" type="button"
+													ng-delete-click="remove(key)">
+													Delete
+												</button>
+
+											</div>
+
+										</div>
+
+									</form>
+
+									<accordion>
+											<ul>
+											<li  class="list-group-item" ng-repeat="(key_data,data_sub_menu) in data.data.sub_menu">
+													<accordion-group
+
+													is-open="data_sub_menu.open" class="b-info">
+															<accordion-heading>
+																	{{data_sub_menu.label}}
+																	<span class="pull-right text-muted">
+																		SUB MEMU
+																		<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': data_sub_menu.open, 'fa-angle-right': !data_sub_menu.open}"></i>
+																	</span>
+															</accordion-heading>
+															<form class="form-horizontal" name="masterFormEdit" class="form-validation">
+
+																<div class="form-group">
+																<label class="col-sm-2 control-label">Label</label>
+																<div class="col-sm-10">
+																	<input class="form-control"  type="text"
+																		ng-model="data_sub_menu.label"  />
+																</div>
+															</div>
+
+
+																<div class="form-group">
+																	<label class="col-sm-2 control-label">URL</label>
+																	<div class="col-sm-10">
+																		<input class="form-control" type="text"
+																			ng-model="data_sub_menu.data.url"  />
+																	</div>
+																</div>
+
+
+
+
+											<div class="form-group">
+												<div class="col-sm-offset-2 col-sm-10">
+													<button class="btn btn-success" type="submit"
+														ng-disabled="loading() || masterFormEdit.$invalid"
+														ng-click="save_all()">
+														Update<i class="fa fa-spinner fa-spin"
+															ng-show="loading()"></i>
+													</button>
+
+													<button class="btn btn-danger" type="button"
+														ng-delete-click="remove_sub_menu(key,key_data)">
+														Delete
+													</button>
+												</div>
+											</div>
+										</form>
+
+												</li>
+											<ul>
+									</accordion>
+
+
+					              </div>
+
+
+					               <div ng-show="data.type=='BLOG'">
+					              		<form class="form-horizontal" name="masterFormEdit" class="form-validation">
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Label</label>
+											<div class="col-sm-10">
+												<input class="form-control"  type="text"
+													ng-model="data.label"  />
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<button class="btn btn-success" type="submit"
+													ng-disabled="loading() || masterFormEdit.$invalid"
+													ng-click="save_all()">
+													Update<i class="fa fa-spinner fa-spin"
+														ng-show="loading()"></i>
+												</button>
+
+												<button class="btn btn-danger" type="button"
+													ng-delete-click="remove(key)">
+													Delete
+												</button>
+
+											</div>
+
+										</div>
+
+									</form>
+
+
+					              </div>
+
+
+												<div ng-show="data.type=='MODULE'">
+					              		<form class="form-horizontal" name="masterFormEditModule" class="form-validation">
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Label</label>
+											<div class="col-sm-10">
+												<input class="form-control"  type="text"
+													ng-model="data.label"  />
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Type</label>
+											<div class="col-sm-10">
+												<label class="label label-info label-lg" > {{data.data.module}}</label>
+											</div>
+										</div>
+
+
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+
+												<button class="btn btn-success" type="submit"
+													ng-disabled="loading() || masterFormEditModule.$invalid"
+													ng-click="update_module(data,key)">
+													Update<i class="fa fa-spinner fa-spin"
+														ng-show="loading()"></i>
+												</button>
+
+												<button class="btn btn-danger" type="button"
+													ng-delete-click="remove(key)">
+													Delete
+												</button>
+
+											</div>
+
+										</div>
+
+									</form>
+					              </div>
+
+
+					              <div ng-show="data.type=='TEXT'">
+					              		<form class="form-horizontal" name="masterFormEdit" class="form-validation">
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Title</label>
+											<div class="col-sm-10">
+												<input class="form-control"  type="text"
+													ng-model="data.label"  />
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Description</label>
+											<div class="col-sm-10">
+												<textarea class="form-control" rows="5"
+													ng-model="data.description"  />
+											</div>
+										</div>
+
+
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<button class="btn btn-success" type="submit"
+													ng-disabled="loading() || masterFormEdit.$invalid"
+													ng-click="update_text(data,key)">
+													Update<i class="fa fa-spinner fa-spin"
+														ng-show="loading()"></i>
+												</button>
+
+												<button class="btn btn-danger" type="button"
+													ng-delete-click="remove(key)">
+													Delete
+												</button>
+
+											</div>
+
+										</div>
+
+									</form>
+
+
+					              </div>
+
+					              <p>
+					              	Move
+					              	<a ng-hide="key==0"
+					              	class='text-info'
+					              	style="text-decoration: underline;"
+					              	ng-click="up_one(key)">Up one</a>
+					              	<a class='text-info'
+					              	ng-hide="list_menu_navigation.length==key+1"
+					              	ng-click="down_one(key)"
+					              	style="text-decoration: underline;">Down one</a>
+					              	<a ng-hide="key==0"
+					              	class='text-info'
+					              	style="text-decoration: underline;"
+					              	ng-click="to_top(key)"
+					              	>To the top</a>
+					              </p>
+					           </accordion-group>
+					       </li>
+					           </ul>
+					    </accordion >
+
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-lg-6">
+
+			<accordion >
+
+				<accordion-group is-open="status.module" class="b-info">
+					 <accordion-heading>
+							 Module <i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.module, 'fa-angle-right': !status.module}"></i>
+					 </accordion-heading>
+
+					 <form class="form-horizontal" name="masterFormModule" class="form-validation">
+
+						 <div class="form-group">
+							 <label class="col-sm-2 control-label">Label</label>
+							 <div class="col-sm-10">
+								 <input class="form-control"  type="text"
+									 ng-model="module.label"  />
+							 </div>
+						 </div>
+
+						 <div class="form-group">
+							<label class="col-sm-2 control-label">Type</label>
+							<div class="col-sm-10">
+								<select class="form-control"  ng-model="module.module"
+																			ng-options="combo_box.id as combo_box.name for combo_box in list_module"
+																			required>
+																			</select>
+
+							</div>
+						</div>
+
+
+
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button class="btn btn-success" type="submit"
+									ng-disabled="loading() || masterFormModule.$invalid"
+									ng-click="save_module(module)">
+									Add to Menu<i class="fa fa-spinner fa-spin"
+										ng-show="loading()"></i>
+								</button>
+
+							</div>
+
+						</div>
+
+					</form>
+
+
+
+			 </accordion-group>
+
+           <accordion-group is-open="status.pages" class="b-info">
+              <accordion-heading>
+                  Pages <i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.pages, 'fa-angle-right': !status.pages}"></i>
+              </accordion-heading>
+					 <ul class="list-group">
+				          <li class="list-group-item" data-ng-repeat="page in list_pages">
+				            <div class="checkbox">
+			                  <label class="i-checks">
+			                    <input  type="checkbox"
+                                      data-ng-model="page.is_checked"
+                                      data-ng-change="add_menu_by_page(page)"
+                               ><i></i>{{page.name}}
+			                  </label>
+			                </div>
+
+				          </li>
+				        </ul>
+
+          </accordion-group>
+
+
+          <accordion-group is-open="status.categories" class="b-info">
+              <accordion-heading>
+                  Categories <i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.categories, 'fa-angle-right': !status.categories}"></i>
+              </accordion-heading>
+
+							<form class="form-horizontal" name="masterFormCategory" class="form-validation">
+
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Label</label>
+								<div class="col-sm-10">
+									<input class="form-control"  type="text"
+										ng-model="category.label"  />
+								</div>
+							</div>
+
+							<div class="form-group">
+							 <label class="col-sm-2 control-label">Category</label>
+							 <div class="col-sm-10">
+								 <select class="form-control"  ng-model="category.data"
+											 ng-options="combo_box as combo_box.name for combo_box in list_category"
+											 required>
+											 </select>
+
+							 </div>
+						 </div>
+
+						 <div class="form-group">
+							<label class="col-sm-2 control-label">Sub Menu</label>
+							<div class="col-sm-10">
+								<div class="checkbox">
+	 								 <label class="i-checks">
+	 									 <input  type="checkbox"
+	 															 data-ng-model="category.include_sub_menu"
+	 												><i></i>Include Sub menu from product
+	 								 </label>
+	 							 </div>
+
+							</div>
+						</div>
+
+
+
+
+
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button class="btn btn-success" type="submit"
+										ng-disabled="loading() || masterFormCategory.$invalid"
+										ng-click="add_menu_by_category(category)">
+										Add to Menu<i class="fa fa-spinner fa-spin"
+											ng-show="loading()"></i>
+									</button>
+
+								</div>
+
+							</div>
+
+						</form>
+
+
+          </accordion-group>
+
+          <accordion-group is-open="status.blog" class="b-info">
+              <accordion-heading>
+                  Blog <i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.custom, 'fa-angle-right': !status.custom}"></i>
+              </accordion-heading>
+					 <form class="form-horizontal" name="masterFormBlog" class="form-validation">
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Label</label>
+							<div class="col-sm-10">
+								<input class="form-control"  type="text"
+									ng-model="blog.label"  />
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button class="btn btn-success" type="submit"
+									ng-disabled="loading() || masterFormBlog.$invalid"
+									ng-click="save_blog(blog)">
+									Add to Menu<i class="fa fa-spinner fa-spin"
+										ng-show="loading()"></i>
+								</button>
+
+							</div>
+
+						</div>
+
+					</form>
+
+          </accordion-group>
+
+           <accordion-group is-open="status.custom" class="b-info">
+              <accordion-heading>
+                  Custom Link <i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.custom, 'fa-angle-right': !status.custom}"></i>
+              </accordion-heading>
+					 <form class="form-horizontal" name="masterForm" class="form-validation">
+
+
+							<div class="form-group">
+							<label class="col-sm-2 control-label">Label</label>
+							<div class="col-sm-10">
+								<input class="form-control"  type="text"
+									ng-model="custom_link.label"  />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">URL</label>
+							<div class="col-sm-10">
+								<input class="form-control" type="text"
+									ng-model="custom_link.url"  />
+							</div>
+						</div>
+
+
+						<div class="form-group">
+								<label class="col-sm-2 control-label">Parent Menu</label>
+								<div class="col-sm-10">
+									<select class="form-control"  ng-model="custom_link.parent_menu"
+												>
+												<option ng-repeat="(key,parent) in get_parent_menu()" value='{{parent.label}}'>{{parent.label}}</option>
+												</select>
+								</div>
+							</div>
+
+
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button class="btn btn-success" type="submit"
+									ng-disabled="loading() || masterForm.$invalid"
+									ng-click="save_custom_link(custom_link)">
+									Add to Menu<i class="fa fa-spinner fa-spin"
+										ng-show="loading()"></i>
+								</button>
+
+							</div>
+
+						</div>
+
+					</form>
+
+          </accordion-group>
+
+
+          <accordion-group is-open="status.text" class="b-info" ng-show="master.name=='menu_sidebar'">
+              <accordion-heading>
+                  Text <i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.text, 'fa-angle-right': !status.text}"></i>
+              </accordion-heading>
+					 <form class="form-horizontal" name="masterForm" class="form-validation">
+
+
+
+
+							<div class="form-group">
+							<label class="col-sm-2 control-label">Label</label>
+							<div class="col-sm-10">
+								<input class="form-control"  type="text"
+									ng-model="text_type.label"  />
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Description</label>
+							<div class="col-sm-10">
+								<textarea class="form-control" rows="5"
+									ng-model="text_type.description"  />
+							</div>
+						</div>
+
+
+
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button class="btn btn-success" type="submit"
+									ng-disabled="loading() || masterForm.$invalid"
+									ng-click="save_text(text_type)">
+									Add to Menu<i class="fa fa-spinner fa-spin"
+										ng-show="loading()"></i>
+								</button>
+
+							</div>
+
+						</div>
+
+					</form>
+
+          </accordion-group>
+
+
+           <accordion-group is-open="status.gallery" class="b-info" ng-hide="master.name=='menu_sidebar'">
+              <accordion-heading>
+                  Galleries <i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.gallery, 'fa-angle-right': !status.gallery}"></i>
+              </accordion-heading>
+					 <ul class="list-group">
+				          <li class="list-group-item" data-ng-repeat="category in list_gallery_category">
+				            <div class="checkbox">
+			                  <label class="i-checks">
+			                    <input  type="checkbox"
+                                      data-ng-model="category.is_checked"
+                               ><i></i>{{category.name}}
+			                  </label>
+			                </div>
+
+				          </li>
+				        </ul>
+
+				        <br>
+
+				        <form class="form-horizontal" name="masterForm" class="form-validation">
+
+
+
+
+							<div class="form-group">
+							<label class="col-sm-2 control-label">Label</label>
+							<div class="col-sm-10">
+								<input class="form-control" ng-change='changeGalleryName()'  type="text"
+									ng-model="gallery.label"  />
+							</div>
+						</div>
+
+
+
+
+
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button class="btn btn-success" type="submit"
+									ng-disabled="loading() || masterForm.$invalid"
+									ng-click="save_gallery(gallery)">
+									Add to Menu<i class="fa fa-spinner fa-spin"
+										ng-show="loading()"></i>
+								</button>
+
+							</div>
+
+						</div>
+
+					</form>
+
+          </accordion-group>
+
+
+        </accordion>
+
+
+
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,162 @@
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<div class="wrapper-md">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading font-bold">
+					<i class="fa fa-list-alt fa-pencil"></i> {{title}}
+				</div>
+				<div class="panel-body">
+					
+
+
+						
+
+						<div class="hbox hbox-auto-xs hbox-auto-sm"   nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+						  
+						    
+
+						  <div class="col">
+						  	
+						    <input type="file" nv-file-select="" uploader="uploader" multiple />
+						  <br>
+
+						    <div class="wrapper-md bg-light dk b-b">
+						      <span class="pull-right m-t-xs">Queue length: <b class="badge bg-info">{{ uploader.queue.length }}</b></span>
+						      <h3 class="m-n font-thin">Upload queue</h3>      
+						    </div>
+						    <div class="wrapper-md">
+						      <table class="table bg-white-only b-a">
+						          <thead>
+						              <tr>
+						                  <th width="50%">Name</th>
+						                  <th ng-show="uploader.isHTML5">Size</th>
+						                  <th ng-show="uploader.isHTML5">Progress</th>
+						                  <th>Status</th>
+						                  <!-- <th>Actions</th> -->
+						              </tr>
+						          </thead>
+						          <tbody>
+						              <tr ng-repeat="item in uploader.queue">
+						                  <td><strong>{{ item.file.name }}</strong></td>
+						                  <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/300/300|number:2 }} KB</td>
+						                  <td ng-show="uploader.isHTML5">
+						                      <div class="progress progress-sm m-b-none m-t-xs">
+						                          <div class="progress-bar bg-info" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+						                      </div>
+						                  </td>
+						                  <td class="text-center">
+						                      <span ng-show="item.isSuccess" class="text-success"><i class="glyphicon glyphicon-ok"></i></span>
+						                      <span ng-show="item.isCancel" class="text-warning"><i class="glyphicon glyphicon-ban-circle"></i></span>
+						                      <span ng-show="item.isError" class="text-danger"><i class="glyphicon glyphicon-remove"></i></span>
+						                  </td>
+						                 <!--  <td nowrap>
+						                      <button type="button" class="btn btn-default btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+						                          Upload
+						                      </button>
+						                      <button type="button" class="btn btn-default btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+						                          Cancel
+						                      </button>
+						                      <button type="button" class="btn btn-default btn-xs" ng-click="item.remove()">
+						                          Remove
+						                      </button>
+						                  </td> -->
+						              </tr>
+						          </tbody>
+						      </table>
+						      <div>
+						        <div>
+						          <p>Queue progress:</p>
+						          <div class="progress bg-light dker" style="">
+						              <div class="progress-bar progress-bar-striped bg-info" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+						          </div>
+						        </div>
+						        <form class="form-horizontal" name="masterForm" class="form-validation">
+						        <div class="form-group">
+									<label class="col-sm-2 control-label">Category</label>
+									<div class="col-sm-3">
+										 <select class="form-control" required ng-model="master.category_id"
+		                                      ng-options="combo_box.id as combo_box.name for combo_box in list_gallery_category"
+		                                      >
+		                                      </select>
+									</div>
+								</div>
+
+						        <button type="button" class="btn btn-addon btn-success" ng-click="uploader.uploadAll()" 
+						        ng-disabled="!uploader.getNotUploadedItems().length ||  masterForm.$invalid">
+						          <i class="fa fa-arrow-circle-o-up"></i> Upload all
+						        </button>
+						        <button type="button" class="btn btn-addon btn-warning" ng-click="clear()" >
+						          <i class="fa fa-ban"></i> Cancel 
+						        </button>
+						       <!--  <button type="button" class="btn btn-addon btn-danger" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+						            <i class="fa fa-trash-o"></i> Remove all
+						        </button> -->
+						        </form>
+						       
+						      </div>
+
+
+						    </div>
+						  </div>
+						</div>
+
+						<div class='table-responsive'>
+
+						<table class="table bg-white-only b-a">
+                            <thead>
+                                <tr>
+                                    <th style="width:50px">Action</th>
+                                    <th style="width:100px">Images</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Path</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="ng-scope" ng-repeat="(key,master) in list_images">
+                                	<td class="v-middle" nowrap="">
+                                        <button type="button" class="btn btn-danger btn-xs ng-isolate-scope" ng-delete-click="remove(master,key)" master="master">Delete</button>
+                                    </td>
+                                    <td class="v-middle">
+                                        <div class="inline bg-white wrapper-sm b-a">
+                                            <div class="bg-light">
+                                                <img src="{{company.base_url}}{{master.image_thumb}}" class="thumb-xl">
+                                            </div>
+                                        </div>             
+                                    </td>
+                                    <td class="v-middle">
+                                    	<p class="form-control-static">
+                                    		<a editable-text="master.title" onaftersave="update(master)">{{ master.title || 'Empty' }}</a>
+                                    	</p>
+                                    </td>
+
+                                     <td class="v-middle">
+                                    	 <select class="form-control"  ng-model="master.gallery_category_id"
+                                    	  	ng-change="update(master)"
+		                                      ng-options="combo_box.id as combo_box.name for combo_box in list_gallery_category"
+		                                      >
+		                                      </select>
+                                    </td>
+
+                                    <td class="v-middle">
+                                    	<p class="form-control-static">
+                                    		{{master.image}}
+                                    	</p>
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>

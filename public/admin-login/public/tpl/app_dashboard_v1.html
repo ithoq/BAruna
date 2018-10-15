@@ -1,0 +1,170 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false;
+    app.settings.asideDock = true;
+  ">
+  <!-- main -->
+  <div class="col">
+    <!-- main header -->
+    <div class="bg-light lter b-b wrapper-md">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h1 class="m-n font-thin h3 text-black">Dashboard</h1>
+          <small class="text-muted">Welcome to Panel Website</small>
+        </div>
+      </div>
+    </div>
+    <section class="content ng-scope">
+      <div class="wrapper-md">
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3 class="ng-pristine ng-valid ng-binding ng-touched" tabindex="0" aria-invalid="false" style="">{{(product.data|filter:query).length}}</h3>
+              <p>PRODUCT</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a class="small-box-footer" ui-sref="app.product-edit({  master : {} })" tabindex="0">ADD NEW <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3 class="ng-binding">{{(blog.data|filter:query).length}}</h3>
+              <p>BLOG</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a class="small-box-footer" ui-sref="app.blog-edit({  master : {} })" tabindex="0">ADD NEW <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3 class="ng-binding">{{(credit.data|filter:query).length}}</h3>
+              <p>CREDIT</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a class="small-box-footer" ui-sref="app.add-credit" tabindex="0">VIEW ALL <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper-md">
+        <div class="col-md-6">
+          <div class="col-md-12">
+            <div class="box box-solid">
+              <div class="box-header with-border">
+                <h3 class="box-title">Recent Blog</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <!-- ngRepeat: blog in list_blog -->
+                <div class="bx-b ng-scope" ng-repeat="blog in blog.data | filter:query | orderBy:created_at | limitTo:currentPage" style="">
+                  <div class="b1">
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td class="ng-binding">
+                            <span style="font-weight: bold; font-size: 16px;" class="ng-binding">{{ blog.name }}</span>
+                            <br>Created By : {{ blog.created_by }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="b2">
+                    <button type="button" class="btn btn-warning btn-sm btn-spc" tooltip="Edit" tooltip-placement="left" ng-click="edit_blog(blog)" tabindex="0">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- end ngRepeat: blog in list_blog -->
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+          <div class="col-md-12">
+            <div class="box box-solid">
+              <div class="box-header with-border">
+                <h3 class="box-title">Online Kredit</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Action</th>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="master in credit.data | filter: { status : 0 }">
+                        <td class="col-xs-2 col-sm-2" align="center">
+                          <button type="button" class="btn btn-warning btn-sm"
+                            tooltip="Edit" tooltip-placement="left"
+                            ng-click="edit_credit(master)">
+                            <i class="fa fa-edit"></i>
+                          </button>
+                          <button type="button" class="btn btn-danger btn-sm"
+                            tooltip="Delete" tooltip-placement="right"
+                            ng-delete-click="remove_credit(master)"
+                            >
+                            <i class="fa fa-times"></i>
+                          </button>
+                        </td>
+                        <td class="v-middle">{{master.credit_category.name}}</td>
+                        <td class="v-middle">{{master.name}}</td>
+                        <td class="v-middle">{{master.status==1?'Publish':'Draft'}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- /.box -->
+            </div>
+            <!-- /.col -->
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-md-6">
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Interest Rate</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Interest</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="rate in rate.data | filter:query | orderBy:description">
+                      <td class="v-middle">{{ rate.name }}</td>
+                      <td class="v-middle">{{ rate.description }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- /.box -->
+          </div>
+          <!-- /.col -->
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- / main -->
+</div>

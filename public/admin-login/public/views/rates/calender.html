@@ -1,0 +1,87 @@
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+
+
+<div class="wrapper-md">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading font-bold">
+					<i class="fa fa-list-alt fa-fw"></i> {{title}}
+				</div>
+
+
+				<div class="panel-body">
+          <div class="row">
+          <div class="col-lg-12 panel">
+             <form class="form-inline ng-pristine ng-valid" name='formsearch' ng-submit='search()' role="form">
+             <div class="form-group">
+               <label class="sr-only" for="startDate">Start Date</label>
+               <div class="input-group w-md">
+                 <input type="text" class="form-control"
+                 ng-disabled='true' datepicker-popup="{{format}}" ng-model="criteria.start_date" is-open="start_opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                 <span class="input-group-btn">
+                   <button type="button" class="btn btn-default" ng-click="open_start($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                 </span>
+               </div>
+             </div>
+
+             <div class="form-group">
+               <label class="sr-only" for="endDate">End Date</label>
+               <div class="input-group w-md">
+                 <input type="text" class="form-control" ng-disabled='true' datepicker-popup="{{format}}" ng-model="criteria.end_date" is-open="end_opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                 <span class="input-group-btn">
+                   <button type="button" class="btn btn-default" ng-click="open_end($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                 </span>
+               </div>
+            </div>
+
+
+
+             <button class="btn btn-sm btn-info" type="submit"
+                     ng-disabled="loading() || formsearch.$invalid">
+               <i class="fa fa-spinner fa-spin"
+                         ng-show="loading()"></i>Search
+             </button>
+             </form>
+           </div>
+        </div>
+					<br>
+
+					<button class="btn btn-primary m-b-lg" ng-click="opan_modal()"
+					 has-permission='rates-create'
+					>Bulk Update</button>
+
+
+        <div class='table-responsive'>
+        <table class="table bg-white">
+              <thead class='bg-dark'>
+                <tr>
+                  <th class="fixed-column" style="width: 250px">Room Type</th>
+                  <th class="text-center" ng-repeat="dates in list_dates">{{dates.date|date}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="heading" ng-repeat="room in list_room_rates">
+                  <td style="width: 250px"><h4>{{room.name}}</h4></td>
+                  <td class="text-right v-middle" ng-repeat="rates in room.rates">
+                    <span editable-number="rates.rates" onbeforesave="save(rates)"  e-required>
+                        <span class="btn btn-sm btn-default">{{ rates.rates | currencycode: 'IDR' }}</span>
+                        </span>
+                  </td>
+                </tr>
+
+
+                  </tbody>
+                </table>
+  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script type="text/ng-template" id="modalBulkUpdate.html">
+    <div ng-include="'public/views/rates/modal_bulk_update.html'"></div>
+  </script>
